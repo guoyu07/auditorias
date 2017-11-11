@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Made by Sinfallas <sinfallas@yahoo.com>
+# Licence: GPL-2
+LC_ALL=C
+IFS=" "
+trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
+echo "$BASHPID" > /run/$(basename $0).pid
+exec 2>/var/log/$(basename $0).log
+
+
+
+
+
+
+
+* Verificar que el script comience con **#!/usr/bin/env bash** en lugar de **#!/bin/bash**, lo mismo aplica para el interprete **sh**.
+* Verificar que contenga el nombre y correo del creador.
+* Verificar que contenga el nombre de la licencia.
+* Verificar que tenga la linea **LC_ALL=C** antes del código principal.
+* Verificar que tenga la linea **IFS=" "** antes del código principal.
+* Verificar que se cree el archivo **PID** al principio del código.
+* Verificar que incluya **TRAP** para limpieza al terminar la ejecución (eliminar PID, temporales, etc.)
+* Si el script requiere privilegios de **ROOT** debe existir la verificación de credenciales.
+* Si el script requiere que sea ejecutado como un usuario **NO-ROOT** debe existir la verificación de credenciales.
+* Verificar que la ultima linea sea **exit 0**.
+* El script debe crear un archivo log en caso de error.
+* El script debe pasar todas las pruebas de [Shellcheck](https://github.com/koalaman/shellcheck).
+* Verificar que el código fuente del script este disponible en alguna forja (plataforma de desarrollo colaborativo).
+* Si el script contiene errores o requiere adaptaciones deben enviarse al desarrollador.
+* El script no debe duplicar funciones de otros componentes (aunque si puede automatizar procesos)
+* Si el script contiene código duplicado de otro script este debe enlazarse al original para hacer el código mas pequeño (por ejemplo el archivo variables).
+* Si el script se ejecuta desde el terminal el mismo debe contener indicaciones de como usarlo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+echo "Finalizado."
+rm -f /run/$(basename $0).pid
+exit 0
