@@ -1,0 +1,11 @@
+commit c757bbc308430d50cc58ffe52276033b60093c8b (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Nov 10 21:40:30 2017 -0400
+
+    * se coloca la primera version del script de auditoria de paquetes
+
+commit 244570d8da928fb8dec3b8a2a6a319354c2209bb
+Author: Jose Perez <sinfallas@users.noreply.github.com>
+Date:   Fri Nov 10 21:38:12 2017 -0400
+
+    Initial commit
