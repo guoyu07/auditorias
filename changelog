@@ -1,4 +1,16 @@
-commit 3079564ed4ec00cf9c3baa2243f37fba86a46b5c (HEAD, origin/master, origin/HEAD, master)
+commit 9330b2e1a15370c22372cfd65d6655036b5373c2 (HEAD, origin/master, origin/HEAD, master)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Nov 10 21:43:47 2017 -0400
+
+    * se coloca la primera version del script para auditoria de scripts
+
+commit ae3892b3947ca7ea0a2bfb1a52f3684277ec8df5
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Nov 10 21:42:27 2017 -0400
+
+    * changelog
+
+commit 3079564ed4ec00cf9c3baa2243f37fba86a46b5c
 Author: jose perez <sinfallas@gmail.com>
 Date:   Fri Nov 10 21:42:17 2017 -0400
 
