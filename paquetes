@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# Made by Sinfallas <sinfallas@yahoo.com>
+# Licence: GPL-2
+LC_ALL=C
+IFS=" "
+trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
+echo "$BASHPID" > /run/$(basename $0).pid
+exec 2>/var/log/$(basename $0).log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* Verificar que la raíz del paquete contenga los archivos: **AUTHORS**, **COPYING**
+* Verificar que en el directorio **debian** existan los siguientes archivos: **changelog**, **compat**, **conffiles**, **control**, **copyright**, **install**, **md5sums**, **postinst**, **postrm**, **preinst**, **prerm**, **rules**
+* Verificar que el archivo **control** en el directorio **debian** de cada paquete contenga todos los campos necesarios: Source, Section, Priority, Maintainer, Build-Depends, Standards-Version, Homepage, Vcs-Bzr, Package, Architecture, Depends, Description.
+* Verificar que el campo **Build-Depends** del archivo **control** contenga el valor: **debhelper**, **cdbs**
+* Verificar que el campo **Architecture** del archivo **control** contenga el valor: **all**
+* Verificar que el paquete no contenga dependencias que vayan en contra de las [directrices de software libre](https://xanadulinux.wordpress.com/contrato-social/) (paquetes non-free) (la excepción a esta clausula son los paquetes de drivers)
+* Verificar que la lista de dependencias finalice con las siguientes variables: **${misc:Depends}**, **${shlibs:Depends}**, **${perl:Depends}**
+* Verificar que las dependencias no entren en conflicto con algún otro paquete del grupo de construcción.
+* Verificar que la descripción del paquete este en español.
+* Verificar que en el directorio **debian** exista el subdirectorio: **source** y que contenga el archivo: **format**
+* Verificar que los archivos: **changelog**, **control**, **copyright**, **COPYING** hagan referencia al nombre del paquete que corresponden
+* Verificar que los archivos: **postinst**, **postrm**, **preinst**, **prerm** contengan las funciones correspondientes a cada fase de dpkg.
+* Verificar que el archivo: **compat** tenga el valor **9**
+* Verificar que los archivos **install**, **md5sums** contengan la lista de todos los archivos a instalar
+* Verificar que el archivo: **conffiles** contenga la lista de todos los archivos de configuración dentro del paquete.
+* Verificar que el archivo: **rules** tenga el mismo contenido que el paquete de ejemplo publicado en [git](https://github.com/sinfallas/package-examples).
+* Verificar que los archivos a instalar no estén dentro de ningún directorio
+* Para evitar errores en el archivo: **postinst** en la fase **configure)** se debe dar permiso de ejecución a los script que sean instalados.
+* Verificar que las dependencias del paquete tengan versiones para las arquitecturas **I386**, **AMD64** y **ARM** (A pesar que de la arquitectura I386 no tiene soporte oficial se mantiene como legacy)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+echo "Finalizado."
+rm -f /run/$(basename $0).pid
+exit 0
