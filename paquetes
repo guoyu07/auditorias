@@ -5,7 +5,6 @@ LC_ALL=C
 IFS=" "
 trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
 echo "$BASHPID" > /run/$(basename $0).pid
-exec 2>/var/log/$(basename $0).log
 
 if ! [[ -f $(pwd)/AUTHORS ]]; then
 	echo "No existe el archivo AUTHORS"
@@ -148,16 +147,16 @@ else
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends" | grep "debhelper") ]]; then
-	echo "El campo Build-Depends contiene el parametro debhelper"
+	echo "El campo Build-Depends del archivo control contiene el parametro debhelper"
 else
-	echo "El campo Build-Depends NO contiene el parametro debhelper"
+	echo "El campo Build-Depends del archivo control NO contiene el parametro debhelper"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends" | grep "cdbs") ]]; then
-	echo "El campo Build-Depends contiene el parametro cdbs"
+	echo "El campo Build-Depends del archivo control contiene el parametro cdbs"
 else
-	echo "El campo Build-Depends NO contiene el parametro cdbs"
+	echo "El campo Build-Depends del archivo control NO contiene el parametro cdbs"
 	exit 1
 fi
 
@@ -213,25 +212,31 @@ fi
 
 
 
-
-
-
-
-
-
 if ! [[ -d $(pwd)/debian/source ]]; then
+	echo "No existe el directorio debian/source"
+	exit 1
+else
+	echo "El directorio debian/source existe"
+fi
 
+if ! [[ -f $(pwd)/debian/source/format ]]; then
+	echo "No existe el archivo debian/source/format"
+	exit 1
+else
+	echo "El archivo debian/source/format existe"
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/source/format | grep "3.0 (quilt)") ]]; then
+	echo "El archivo /debian/source/format contiene 3.0 (quilt)"
+else
+	echo "El archivo /debian/source/format NO contiene 3.0 (quilt)"
+	exit 1
 fi
 
 
 
-
 * Verificar que el campo **Architecture** del archivo **control** contenga el valor: **all**
-* Verificar que el paquete no contenga dependencias que vayan en contra de las [directrices de software libre](https://xanadulinux.wordpress.com/contrato-social/) (paquetes non-free) (la excepción a esta clausula son los paquetes de drivers)
 * Verificar que la lista de dependencias finalice con las siguientes variables: **${misc:Depends}**, **${shlibs:Depends}**, **${perl:Depends}**
-* Verificar que las dependencias no entren en conflicto con algún otro paquete del grupo de construcción.
-* Verificar que la descripción del paquete este en español.
-* Verificar que en el directorio **debian** exista el subdirectorio: **source** y que contenga el archivo: **format**
 * Verificar que los archivos: **changelog**, **control**, **copyright**, **COPYING** hagan referencia al nombre del paquete que corresponden
 * Verificar que los archivos: **postinst**, **postrm**, **preinst**, **prerm** contengan las funciones correspondientes a cada fase de dpkg.
 * Verificar que el archivo: **compat** tenga el valor **9**
@@ -239,8 +244,7 @@ fi
 * Verificar que el archivo: **conffiles** contenga la lista de todos los archivos de configuración dentro del paquete.
 * Verificar que el archivo: **rules** tenga el mismo contenido que el paquete de ejemplo publicado en [git](https://github.com/sinfallas/package-examples).
 * Verificar que los archivos a instalar no estén dentro de ningún directorio
-* Para evitar errores en el archivo: **postinst** en la fase **configure)** se debe dar permiso de ejecución a los script que sean instalados.
-* Verificar que las dependencias del paquete tengan versiones para las arquitecturas **I386**, **AMD64** y **ARM** (A pesar que de la arquitectura I386 no tiene soporte oficial se mantiene como legacy)
+
 
 
 
