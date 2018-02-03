@@ -1,4 +1,22 @@
-commit 9330b2e1a15370c22372cfd65d6655036b5373c2 (HEAD, origin/master, origin/HEAD, master)
+commit 6951e16837a8881e14ad25b46bebab54848cfb3e (HEAD -> master, origin/master, origin/HEAD)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Sat Feb 3 15:48:27 2018 -0400
+
+    * se coloca verificacion de archivos
+
+commit ade6be3e1074824034ed2ac4aa68c25d1416609c (tag: v0.2)
+Author: Jose Perez <sinfallas@users.noreply.github.com>
+Date:   Thu Nov 23 07:48:31 2017 -0400
+
+    Update README.md
+
+commit f657df5d877cbfb0a8b42df2eb505a505dba9fd2 (tag: v0.1)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Fri Nov 10 21:44:12 2017 -0400
+
+    * changelog
+
+commit 9330b2e1a15370c22372cfd65d6655036b5373c2
 Author: jose perez <sinfallas@gmail.com>
 Date:   Fri Nov 10 21:43:47 2017 -0400
 
