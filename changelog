@@ -1,4 +1,16 @@
-commit 968715fc67e2da89739728b474984954f32937ae (HEAD -> master, origin/master, origin/HEAD)
+commit 53cf26d320403396643e3695093c5560bca97022 (HEAD -> master, origin/master, origin/HEAD)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Sat Feb 3 16:37:44 2018 -0400
+
+    * se colocan mas comprobaciones
+
+commit ad45a010002062a1c473ce2a66682db258acfcbb
+Author: jose perez <sinfallas@gmail.com>
+Date:   Sat Feb 3 16:19:27 2018 -0400
+
+    * changelog
+
+commit 968715fc67e2da89739728b474984954f32937ae
 Author: jose perez <sinfallas@gmail.com>
 Date:   Sat Feb 3 16:19:03 2018 -0400
 
