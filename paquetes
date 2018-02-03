@@ -112,12 +112,103 @@ else
 	echo "El archivo debian/rules existe"
 fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Source") ]]; then
+	echo "El campo Source en el archivo control existe"
+else
+	echo "El campo Source en el archivo control NO existe"
+	exit 1
+fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Section") ]]; then
+	echo "El campo Section en el archivo control existe"
+else
+	echo "El campo Section en el archivo control NO existe"
+	exit 1
+fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Priority") ]]; then
+	echo "El campo Priority en el archivo control existe"
+else
+	echo "El campo Priority en el archivo control NO existe"
+	exit 1
+fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Maintainer") ]]; then
+	echo "El campo Maintainer en el archivo control existe"
+else
+	echo "El campo Maintainer en el archivo control NO existe"
+	exit 1
+fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends") ]]; then
+	echo "El campo Build-Depends en el archivo control existe"
+else
+	echo "El campo Build-Depends en el archivo control NO existe"
+	exit 1
+fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends" | grep "debhelper") ]]; then
+	echo "El campo Build-Depends contiene el parametro debhelper"
+else
+	echo "El campo Build-Depends NO contiene el parametro debhelper"
+	exit 1
+fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends" | grep "cdbs") ]]; then
+	echo "El campo Build-Depends contiene el parametro cdbs"
+else
+	echo "El campo Build-Depends NO contiene el parametro cdbs"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Standards-Version") ]]; then
+	echo "El campo Standards-Version en el archivo control existe"
+else
+	echo "El campo Standards-Version en el archivo control NO existe"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Homepage") ]]; then
+	echo "El campo Homepage en el archivo control existe"
+else
+	echo "El campo Homepage en el archivo control NO existe"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Vcs-Bzr") ]]; then
+	echo "El campo Vcs-Bzr en el archivo control existe"
+else
+	echo "El campo Vcs-Bzr en el archivo control NO existe"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Package") ]]; then
+	echo "El campo Package en el archivo control existe"
+else
+	echo "El campo Package en el archivo control NO existe"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Architecture") ]]; then
+	echo "El campo Architecture en el archivo control existe"
+else
+	echo "El campo Architecture en el archivo control NO existe"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends") ]]; then
+	echo "El campo Depends en el archivo control existe"
+else
+	echo "El campo Depends en el archivo control NO existe"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Description") ]]; then
+	echo "El campo Description en el archivo control existe"
+else
+	echo "El campo Description en el archivo control NO existe"
+	exit 1
+fi
 
 
 
@@ -132,25 +223,9 @@ if ! [[ -d $(pwd)/debian/source ]]; then
 
 fi
 
-if ! [[ -z $(lscpu | grep GenuineIntel) ]]; then
-
-fi
-
-
-if ! [[ -f $(pwd)/AUTHORS ]]; then
-	echo "No existe el archivo AUTHORS"
-	exit 1
-fi
-
-if ! [[ -f $(pwd)/COPYING ]]; then
-	echo "No existe el archivo COPYING"
-	exit 1
-fi
 
 
 
-* Verificar que el archivo **control** en el directorio **debian** de cada paquete contenga todos los campos necesarios: Source, Section, Priority, Maintainer, Build-Depends, Standards-Version, Homepage, Vcs-Bzr, Package, Architecture, Depends, Description.
-* Verificar que el campo **Build-Depends** del archivo **control** contenga el valor: **debhelper**, **cdbs**
 * Verificar que el campo **Architecture** del archivo **control** contenga el valor: **all**
 * Verificar que el paquete no contenga dependencias que vayan en contra de las [directrices de software libre](https://xanadulinux.wordpress.com/contrato-social/) (paquetes non-free) (la excepción a esta clausula son los paquetes de drivers)
 * Verificar que la lista de dependencias finalice con las siguientes variables: **${misc:Depends}**, **${shlibs:Depends}**, **${perl:Depends}**
