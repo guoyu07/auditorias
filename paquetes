@@ -3,8 +3,9 @@
 # Licence: GPL-2
 LC_ALL=C
 IFS=" "
-trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
-echo "$BASHPID" > /run/$(basename $0).pid
+nombre="$(basename `pwd`)"
+rules1="1aba54c95252d9c585bcacf832822cac"
+clear
 
 if ! [[ -f $(pwd)/AUTHORS ]]; then
 	echo "No existe el archivo AUTHORS"
@@ -18,6 +19,13 @@ if ! [[ -f $(pwd)/COPYING ]]; then
 	exit 1
 else
 	echo "El archivo COPYING existe"
+fi
+
+if ! [[ -z $(cat $(pwd)/COPYING | grep "$nombre") ]]; then
+	echo "El archivo COPYING hace referencia al nombre del paquete correcto"
+else
+	echo "El archivo COPYING NO hace referencia al nombre del paquete correcto"
+	exit 1
 fi
 
 if ! [[ -d $(pwd)/debian ]]; then
@@ -34,11 +42,25 @@ else
 	echo "El archivo debian/changelog existe"
 fi
 
+if ! [[ -z $(cat $(pwd)/debian/changelog | grep "$nombre") ]]; then
+	echo "El archivo changelog hace referencia al nombre del paquete correcto"
+else
+	echo "El archivo changelog NO hace referencia al nombre del paquete correcto"
+	exit 1
+fi
+
 if ! [[ -f $(pwd)/debian/compat ]]; then
 	echo "No existe el archivo debian/compat"
 	exit 1
 else
 	echo "El archivo debian/compat existe"
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/compat | grep "9") ]]; then
+	echo "El archivo /debian/compat contiene el valor 9"
+else
+	echo "El archivo /debian/compat NO contiene el valor 9"
+	exit 1
 fi
 
 if ! [[ -f $(pwd)/debian/conffiles ]]; then
@@ -55,60 +77,11 @@ else
 	echo "El archivo debian/control existe"
 fi
 
-if ! [[ -f $(pwd)/debian/copyright ]]; then
-	echo "No existe el archivo debian/copyright"
-	exit 1
+if ! [[ -z $(cat $(pwd)/debian/control | grep "$nombre") ]]; then
+	echo "El archivo control hace referencia al nombre del paquete correcto"
 else
-	echo "El archivo debian/copyright existe"
-fi
-
-if ! [[ -f $(pwd)/debian/install ]]; then
-	echo "No existe el archivo debian/install"
+	echo "El archivo control NO hace referencia al nombre del paquete correcto"
 	exit 1
-else
-	echo "El archivo debian/install existe"
-fi
-
-if ! [[ -f $(pwd)/debian/md5sums ]]; then
-	echo "No existe el archivo debian/md5sums"
-	exit 1
-else
-	echo "El archivo debian/md5sums existe"
-fi
-
-if ! [[ -f $(pwd)/debian/postinst ]]; then
-	echo "No existe el archivo debian/postinst"
-	exit 1
-else
-	echo "El archivo debian/postinst existe"
-fi
-
-if ! [[ -f $(pwd)/debian/postrm ]]; then
-	echo "No existe el archivo debian/postrm"
-	exit 1
-else
-	echo "El archivo debian/postrm existe"
-fi
-
-if ! [[ -f $(pwd)/debian/preinst ]]; then
-	echo "No existe el archivo debian/preinst"
-	exit 1
-else
-	echo "El archivo debian/preinst existe"
-fi
-
-if ! [[ -f $(pwd)/debian/prerm ]]; then
-	echo "No existe el archivo debian/prerm"
-	exit 1
-else
-	echo "El archivo debian/prerm existe"
-fi
-
-if ! [[ -f $(pwd)/debian/rules ]]; then
-	echo "No existe el archivo debian/rules"
-	exit 1
-else
-	echo "El archivo debian/rules existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Source") ]]; then
@@ -195,10 +168,38 @@ else
 	exit 1
 fi
 
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Architecture" | grep "all") ]]; then
+	echo "El campo Architecture en el archivo control contiene el valor all"
+else
+	echo "El campo Architecture en el archivo control NO contiene el valor all"
+	exit 1
+fi
+
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends") ]]; then
 	echo "El campo Depends en el archivo control existe"
 else
 	echo "El campo Depends en el archivo control NO existe"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends" | grep "misc:Depends") ]]; then
+	echo "El campo Depends en el archivo control contiene el valor misc:Depends"
+else
+	echo "El campo Depends en el archivo control NO contiene el valor misc:Depends"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends" | grep "shlibs:Depends") ]]; then
+	echo "El campo Depends en el archivo control contiene el valor shlibs:Depends"
+else
+	echo "El campo Depends en el archivo control NO contiene el valor shlibs:Depends"
+	exit 1
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends" | grep "perl:Depends") ]]; then
+	echo "El campo Depends en el archivo control contiene el valor perl:Depends"
+else
+	echo "El campo Depends en el archivo control NO contiene el valor perl:Depends"
 	exit 1
 fi
 
@@ -209,8 +210,75 @@ else
 	exit 1
 fi
 
+if ! [[ -f $(pwd)/debian/copyright ]]; then
+	echo "No existe el archivo debian/copyright"
+	exit 1
+else
+	echo "El archivo debian/copyright existe"
+fi
 
+if ! [[ -z $(cat $(pwd)/debian/copyright | grep "$nombre") ]]; then
+	echo "El archivo copyright hace referencia al nombre del paquete correcto"
+else
+	echo "El archivo copyright NO hace referencia al nombre del paquete correcto"
+	exit 1
+fi
 
+if ! [[ -f $(pwd)/debian/install ]]; then
+	echo "No existe el archivo debian/install"
+	exit 1
+else
+	echo "El archivo debian/install existe"
+fi
+
+if ! [[ -f $(pwd)/debian/md5sums ]]; then
+	echo "No existe el archivo debian/md5sums"
+	exit 1
+else
+	echo "El archivo debian/md5sums existe"
+fi
+
+if ! [[ -f $(pwd)/debian/postinst ]]; then
+	echo "No existe el archivo debian/postinst"
+	exit 1
+else
+	echo "El archivo debian/postinst existe"
+fi
+
+if ! [[ -f $(pwd)/debian/postrm ]]; then
+	echo "No existe el archivo debian/postrm"
+	exit 1
+else
+	echo "El archivo debian/postrm existe"
+fi
+
+if ! [[ -f $(pwd)/debian/preinst ]]; then
+	echo "No existe el archivo debian/preinst"
+	exit 1
+else
+	echo "El archivo debian/preinst existe"
+fi
+
+if ! [[ -f $(pwd)/debian/prerm ]]; then
+	echo "No existe el archivo debian/prerm"
+	exit 1
+else
+	echo "El archivo debian/prerm existe"
+fi
+
+if ! [[ -f $(pwd)/debian/rules ]]; then
+	echo "No existe el archivo debian/rules"
+	exit 1
+else
+	echo "El archivo debian/rules existe"
+fi
+
+if [[ $(md5sum $(pwd)/debian/rules | awk '{print $1}') = "$rules1" ]]; then
+	echo "El archivo debian/rules tiene el contenido correcto"
+else
+	echo "El archivo debian/rules NO tiene el contenido correcto"
+	exit 1
+fi
 
 if ! [[ -d $(pwd)/debian/source ]]; then
 	echo "No existe el directorio debian/source"
@@ -233,21 +301,10 @@ else
 	exit 1
 fi
 
+# Verificar que los archivos: **postinst**, **postrm**, **preinst**, **prerm** contengan las funciones correspondientes a cada fase de dpkg.
+# Verificar que los archivos **install**, **md5sums** contengan la lista de todos los archivos a instalar
+# Verificar que el archivo: **conffiles** contenga la lista de todos los archivos de configuración dentro del paquete.
 
-
-* Verificar que el campo **Architecture** del archivo **control** contenga el valor: **all**
-* Verificar que la lista de dependencias finalice con las siguientes variables: **${misc:Depends}**, **${shlibs:Depends}**, **${perl:Depends}**
-* Verificar que los archivos: **changelog**, **control**, **copyright**, **COPYING** hagan referencia al nombre del paquete que corresponden
-* Verificar que los archivos: **postinst**, **postrm**, **preinst**, **prerm** contengan las funciones correspondientes a cada fase de dpkg.
-* Verificar que el archivo: **compat** tenga el valor **9**
-* Verificar que los archivos **install**, **md5sums** contengan la lista de todos los archivos a instalar
-* Verificar que el archivo: **conffiles** contenga la lista de todos los archivos de configuración dentro del paquete.
-* Verificar que el archivo: **rules** tenga el mismo contenido que el paquete de ejemplo publicado en [git](https://github.com/sinfallas/package-examples).
-* Verificar que los archivos a instalar no estén dentro de ningún directorio
-
-
-
-
-echo " El paquete supero todos las pruebas exitosamente."
-rm -f /run/$(basename $0).pid
+echo ""
+echo -e "\e[00;1;92mEl paquete supero todos las pruebas exitosamente.\e[00m"
 exit 0
