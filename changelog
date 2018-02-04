@@ -1,4 +1,17 @@
-commit 245f0eb3abff97c52419493cae7eda227040af74 (HEAD -> master, origin/master, origin/HEAD)
+commit fba8b922c29af161cf0f56c792d1b2904f4fc510 (HEAD -> master, origin/master, origin/HEAD)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Sat Feb 3 22:12:45 2018 -0400
+
+    * se agregan colores
+    * se limpia el archivo script
+
+commit 447ef8439491b9371a7f119f57b7f095fec04f37
+Author: jose perez <sinfallas@gmail.com>
+Date:   Sat Feb 3 21:25:19 2018 -0400
+
+    * changelog
+
+commit 245f0eb3abff97c52419493cae7eda227040af74
 Author: jose perez <sinfallas@gmail.com>
 Date:   Sat Feb 3 21:24:50 2018 -0400
 
