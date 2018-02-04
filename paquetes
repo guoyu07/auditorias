@@ -49,13 +49,6 @@ else
 	exit 1
 fi
 
-
-
-
-
-
-
-
 if ! [[ -f $(pwd)/debian/compat ]]; then
 	echo -e "\e[00;31mNo existe el archivo debian/compat\e[00m"
 	exit 1
@@ -252,11 +245,25 @@ else
 	echo "El archivo debian/postinst existe"
 fi
 
+if ! [[ -z $(cat $(pwd)/debian/postinst | grep "esac") ]]; then
+	echo "El archivo /debian/postinst contiene las fases correspondientes"
+else
+	echo -e "\e[00;31mEl archivo /debian/postinst NO contiene las fases correspondientes\e[00m"
+	exit 1
+fi
+
 if ! [[ -f $(pwd)/debian/postrm ]]; then
 	echo -e "\e[00;31mNo existe el archivo debian/postrm\e[00m"
 	exit 1
 else
 	echo "El archivo debian/postrm existe"
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/postrm | grep "esac") ]]; then
+	echo "El archivo /debian/postrm contiene las fases correspondientes"
+else
+	echo -e "\e[00;31mEl archivo /debian/postrm NO contiene las fases correspondientes\e[00m"
+	exit 1
 fi
 
 if ! [[ -f $(pwd)/debian/preinst ]]; then
@@ -266,11 +273,25 @@ else
 	echo "El archivo debian/preinst existe"
 fi
 
+if ! [[ -z $(cat $(pwd)/debian/preinst | grep "esac") ]]; then
+	echo "El archivo /debian/preinst contiene las fases correspondientes"
+else
+	echo -e "\e[00;31mEl archivo /debian/preinst NO contiene las fases correspondientes\e[00m"
+	exit 1
+fi
+
 if ! [[ -f $(pwd)/debian/prerm ]]; then
 	echo -e "\e[00;31mNo existe el archivo debian/prerm\e[00m"
 	exit 1
 else
 	echo "El archivo debian/prerm existe"
+fi
+
+if ! [[ -z $(cat $(pwd)/debian/prerm | grep "esac") ]]; then
+	echo "El archivo /debian/prerm contiene las fases correspondientes"
+else
+	echo -e "\e[00;31mEl archivo /debian/prerm NO contiene las fases correspondientes\e[00m"
+	exit 1
 fi
 
 if ! [[ -f $(pwd)/debian/rules ]]; then
@@ -308,9 +329,7 @@ else
 	exit 1
 fi
 
-# Verificar que los archivos: **postinst**, **postrm**, **preinst**, **prerm** contengan las funciones correspondientes a cada fase de dpkg.
 # Verificar que los archivos **install**, **md5sums** contengan la lista de todos los archivos a instalar
-# Verificar que el archivo: **conffiles** contenga la lista de todos los archivos de configuración dentro del paquete.
 
 echo ""
 echo -e "\e[00;1;92mEl paquete supero todos las pruebas exitosamente.\e[00m"
