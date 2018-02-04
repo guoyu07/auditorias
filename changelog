@@ -1,4 +1,16 @@
-commit 53cf26d320403396643e3695093c5560bca97022 (HEAD -> master, origin/master, origin/HEAD)
+commit 245f0eb3abff97c52419493cae7eda227040af74 (HEAD -> master, origin/master, origin/HEAD)
+Author: jose perez <sinfallas@gmail.com>
+Date:   Sat Feb 3 21:24:50 2018 -0400
+
+    * casi listo
+
+commit 6997dd0e35b6a026927873dcf4e0ed4967fb0241
+Author: jose perez <sinfallas@gmail.com>
+Date:   Sat Feb 3 16:38:11 2018 -0400
+
+    * changelog
+
+commit 53cf26d320403396643e3695093c5560bca97022
 Author: jose perez <sinfallas@gmail.com>
 Date:   Sat Feb 3 16:37:44 2018 -0400
 
