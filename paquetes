@@ -8,14 +8,14 @@ rules1="1aba54c95252d9c585bcacf832822cac"
 clear
 
 if ! [[ -f $(pwd)/AUTHORS ]]; then
-	echo "No existe el archivo AUTHORS"
+	echo -e "\e[00;31mNo existe el archivo AUTHORS\e[00m"
 	exit 1
 else
 	echo "El archivo AUTHORS existe"
 fi
 
 if ! [[ -f $(pwd)/COPYING ]]; then
-	echo "No existe el archivo COPYING"
+	echo -e "\e[00;31mNo existe el archivo COPYING\e[00m"
 	exit 1
 else
 	echo "El archivo COPYING existe"
@@ -24,19 +24,19 @@ fi
 if ! [[ -z $(cat $(pwd)/COPYING | grep "$nombre") ]]; then
 	echo "El archivo COPYING hace referencia al nombre del paquete correcto"
 else
-	echo "El archivo COPYING NO hace referencia al nombre del paquete correcto"
+	echo -e "\e[00;31mEl archivo COPYING NO hace referencia al nombre del paquete correcto\e[00m"
 	exit 1
 fi
 
 if ! [[ -d $(pwd)/debian ]]; then
-	echo "No existe el directorio debian"
+	echo -e "\e[00;31mNo existe el directorio debian\e[00m"
 	exit 1
 else
 	echo "El directorio debian existe"
 fi
 
 if ! [[ -f $(pwd)/debian/changelog ]]; then
-	echo "No existe el archivo debian/changelog"
+	echo -e "\e[00;31mNo existe el archivo debian/changelog\e[00m"
 	exit 1
 else
 	echo "El archivo debian/changelog existe"
@@ -45,12 +45,19 @@ fi
 if ! [[ -z $(cat $(pwd)/debian/changelog | grep "$nombre") ]]; then
 	echo "El archivo changelog hace referencia al nombre del paquete correcto"
 else
-	echo "El archivo changelog NO hace referencia al nombre del paquete correcto"
+	echo -e "\e[00;31mEl archivo changelog NO hace referencia al nombre del paquete correcto\e[00m"
 	exit 1
 fi
 
+
+
+
+
+
+
+
 if ! [[ -f $(pwd)/debian/compat ]]; then
-	echo "No existe el archivo debian/compat"
+	echo -e "\e[00;31mNo existe el archivo debian/compat\e[00m"
 	exit 1
 else
 	echo "El archivo debian/compat existe"
@@ -59,19 +66,19 @@ fi
 if ! [[ -z $(cat $(pwd)/debian/compat | grep "9") ]]; then
 	echo "El archivo /debian/compat contiene el valor 9"
 else
-	echo "El archivo /debian/compat NO contiene el valor 9"
+	echo -e "\e[00;31mEl archivo /debian/compat NO contiene el valor 9\e[00m"
 	exit 1
 fi
 
 if ! [[ -f $(pwd)/debian/conffiles ]]; then
-	echo "No existe el archivo debian/conffiles"
+	echo -e "\e[00;31mNo existe el archivo debian/conffiles\e[00m"
 	exit 1
 else
 	echo "El archivo debian/conffiles existe"
 fi
 
 if ! [[ -f $(pwd)/debian/control ]]; then
-	echo "No existe el archivo debian/control"
+	echo -e "\e[00;31mNo existe el archivo debian/control\e[00m"
 	exit 1
 else
 	echo "El archivo debian/control existe"
@@ -80,138 +87,138 @@ fi
 if ! [[ -z $(cat $(pwd)/debian/control | grep "$nombre") ]]; then
 	echo "El archivo control hace referencia al nombre del paquete correcto"
 else
-	echo "El archivo control NO hace referencia al nombre del paquete correcto"
+	echo -e "\e[00;31mEl archivo control NO hace referencia al nombre del paquete correcto\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Source") ]]; then
 	echo "El campo Source en el archivo control existe"
 else
-	echo "El campo Source en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Source en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Section") ]]; then
 	echo "El campo Section en el archivo control existe"
 else
-	echo "El campo Section en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Section en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Priority") ]]; then
 	echo "El campo Priority en el archivo control existe"
 else
-	echo "El campo Priority en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Priority en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Maintainer") ]]; then
 	echo "El campo Maintainer en el archivo control existe"
 else
-	echo "El campo Maintainer en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Maintainer en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends") ]]; then
 	echo "El campo Build-Depends en el archivo control existe"
 else
-	echo "El campo Build-Depends en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Build-Depends en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends" | grep "debhelper") ]]; then
 	echo "El campo Build-Depends del archivo control contiene el parametro debhelper"
 else
-	echo "El campo Build-Depends del archivo control NO contiene el parametro debhelper"
+	echo -e "\e[00;31mEl campo Build-Depends del archivo control NO contiene el parametro debhelper\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Build-Depends" | grep "cdbs") ]]; then
 	echo "El campo Build-Depends del archivo control contiene el parametro cdbs"
 else
-	echo "El campo Build-Depends del archivo control NO contiene el parametro cdbs"
+	echo -e "\e[00;31mEl campo Build-Depends del archivo control NO contiene el parametro cdbs\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Standards-Version") ]]; then
 	echo "El campo Standards-Version en el archivo control existe"
 else
-	echo "El campo Standards-Version en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Standards-Version en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Homepage") ]]; then
 	echo "El campo Homepage en el archivo control existe"
 else
-	echo "El campo Homepage en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Homepage en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Vcs-Bzr") ]]; then
 	echo "El campo Vcs-Bzr en el archivo control existe"
 else
-	echo "El campo Vcs-Bzr en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Vcs-Bzr en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Package") ]]; then
 	echo "El campo Package en el archivo control existe"
 else
-	echo "El campo Package en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Package en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Architecture") ]]; then
 	echo "El campo Architecture en el archivo control existe"
 else
-	echo "El campo Architecture en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Architecture en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Architecture" | grep "all") ]]; then
 	echo "El campo Architecture en el archivo control contiene el valor all"
 else
-	echo "El campo Architecture en el archivo control NO contiene el valor all"
+	echo -e "\e[00;31mEl campo Architecture en el archivo control NO contiene el valor all\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends") ]]; then
 	echo "El campo Depends en el archivo control existe"
 else
-	echo "El campo Depends en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Depends en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends" | grep "misc:Depends") ]]; then
 	echo "El campo Depends en el archivo control contiene el valor misc:Depends"
 else
-	echo "El campo Depends en el archivo control NO contiene el valor misc:Depends"
+	echo -e "\e[00;31mEl campo Depends en el archivo control NO contiene el valor misc:Depends\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends" | grep "shlibs:Depends") ]]; then
 	echo "El campo Depends en el archivo control contiene el valor shlibs:Depends"
 else
-	echo "El campo Depends en el archivo control NO contiene el valor shlibs:Depends"
+	echo -e "\e[00;31mEl campo Depends en el archivo control NO contiene el valor shlibs:Depends\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Depends" | grep "perl:Depends") ]]; then
 	echo "El campo Depends en el archivo control contiene el valor perl:Depends"
 else
-	echo "El campo Depends en el archivo control NO contiene el valor perl:Depends"
+	echo -e "\e[00;31mEl campo Depends en el archivo control NO contiene el valor perl:Depends\e[00m"
 	exit 1
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "Description") ]]; then
 	echo "El campo Description en el archivo control existe"
 else
-	echo "El campo Description en el archivo control NO existe"
+	echo -e "\e[00;31mEl campo Description en el archivo control NO existe\e[00m"
 	exit 1
 fi
 
 if ! [[ -f $(pwd)/debian/copyright ]]; then
-	echo "No existe el archivo debian/copyright"
+	echo -e "\e[00;31mNo existe el archivo debian/copyright\e[00m"
 	exit 1
 else
 	echo "El archivo debian/copyright existe"
@@ -220,54 +227,54 @@ fi
 if ! [[ -z $(cat $(pwd)/debian/copyright | grep "$nombre") ]]; then
 	echo "El archivo copyright hace referencia al nombre del paquete correcto"
 else
-	echo "El archivo copyright NO hace referencia al nombre del paquete correcto"
+	echo -e "\e[00;31mEl archivo copyright NO hace referencia al nombre del paquete correcto\e[00m"
 	exit 1
 fi
 
 if ! [[ -f $(pwd)/debian/install ]]; then
-	echo "No existe el archivo debian/install"
+	echo -e "\e[00;31mNo existe el archivo debian/install\e[00m"
 	exit 1
 else
 	echo "El archivo debian/install existe"
 fi
 
 if ! [[ -f $(pwd)/debian/md5sums ]]; then
-	echo "No existe el archivo debian/md5sums"
+	echo -e "\e[00;31mNo existe el archivo debian/md5sums\e[00m"
 	exit 1
 else
 	echo "El archivo debian/md5sums existe"
 fi
 
 if ! [[ -f $(pwd)/debian/postinst ]]; then
-	echo "No existe el archivo debian/postinst"
+	echo -e "\e[00;31mNo existe el archivo debian/postinst\e[00m"
 	exit 1
 else
 	echo "El archivo debian/postinst existe"
 fi
 
 if ! [[ -f $(pwd)/debian/postrm ]]; then
-	echo "No existe el archivo debian/postrm"
+	echo -e "\e[00;31mNo existe el archivo debian/postrm\e[00m"
 	exit 1
 else
 	echo "El archivo debian/postrm existe"
 fi
 
 if ! [[ -f $(pwd)/debian/preinst ]]; then
-	echo "No existe el archivo debian/preinst"
+	echo -e "\e[00;31mNo existe el archivo debian/preinst\e[00m"
 	exit 1
 else
 	echo "El archivo debian/preinst existe"
 fi
 
 if ! [[ -f $(pwd)/debian/prerm ]]; then
-	echo "No existe el archivo debian/prerm"
+	echo -e "\e[00;31mNo existe el archivo debian/prerm\e[00m"
 	exit 1
 else
 	echo "El archivo debian/prerm existe"
 fi
 
 if ! [[ -f $(pwd)/debian/rules ]]; then
-	echo "No existe el archivo debian/rules"
+	echo -e "\e[00;31mNo existe el archivo debian/rules\e[00m"
 	exit 1
 else
 	echo "El archivo debian/rules existe"
@@ -276,19 +283,19 @@ fi
 if [[ $(md5sum $(pwd)/debian/rules | awk '{print $1}') = "$rules1" ]]; then
 	echo "El archivo debian/rules tiene el contenido correcto"
 else
-	echo "El archivo debian/rules NO tiene el contenido correcto"
+	echo -e "\e[00;31mEl archivo debian/rules NO tiene el contenido correcto\e[00m"
 	exit 1
 fi
 
 if ! [[ -d $(pwd)/debian/source ]]; then
-	echo "No existe el directorio debian/source"
+	echo -e "\e[00;31mNo existe el directorio debian/source\e[00m"
 	exit 1
 else
 	echo "El directorio debian/source existe"
 fi
 
 if ! [[ -f $(pwd)/debian/source/format ]]; then
-	echo "No existe el archivo debian/source/format"
+	echo -e "\e[00;31mNo existe el archivo debian/source/format\e[00m"
 	exit 1
 else
 	echo "El archivo debian/source/format existe"
@@ -297,7 +304,7 @@ fi
 if ! [[ -z $(cat $(pwd)/debian/source/format | grep "3.0 (quilt)") ]]; then
 	echo "El archivo /debian/source/format contiene 3.0 (quilt)"
 else
-	echo "El archivo /debian/source/format NO contiene 3.0 (quilt)"
+	echo -e "\e[00;31mEl archivo /debian/source/format NO contiene 3.0 (quilt)\e[00m"
 	exit 1
 fi
 

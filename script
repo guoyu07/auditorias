@@ -3,14 +3,6 @@
 # Licence: GPL-2
 LC_ALL=C
 IFS=" "
-trap "rm -f /run/$(basename $0).pid; exit" 0 1 2 3 15
-echo "$BASHPID" > /run/$(basename $0).pid
-exec 2>/var/log/$(basename $0).log
-
-
-
-
-
 
 
 * Verificar que el script comience con **#!/usr/bin/env bash** en lugar de **#!/bin/bash**, lo mismo aplica para el interprete **sh**.
@@ -36,22 +28,5 @@ exec 2>/var/log/$(basename $0).log
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo "Finalizado."
-rm -f /run/$(basename $0).pid
+echo -e "\e[00;1;92mEl script supero todos las pruebas exitosamente.\e[00m"
 exit 0
