@@ -36,10 +36,10 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/changelog ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/changelog\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/changelog\e[00m"
 	exit 1
 else
-	echo "El archivo debian/changelog existe"
+	echo "El archivo /debian/changelog existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/changelog | grep "$nombre") ]]; then
@@ -50,10 +50,10 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/compat ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/compat\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/compat\e[00m"
 	exit 1
 else
-	echo "El archivo debian/compat existe"
+	echo "El archivo /debian/compat existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/compat | grep "9") ]]; then
@@ -64,17 +64,17 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/conffiles ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/conffiles\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/conffiles\e[00m"
 	exit 1
 else
-	echo "El archivo debian/conffiles existe"
+	echo "El archivo /debian/conffiles existe"
 fi
 
 if ! [[ -f $(pwd)/debian/control ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/control\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/control\e[00m"
 	exit 1
 else
-	echo "El archivo debian/control existe"
+	echo "El archivo /debian/control existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/control | grep "$nombre") ]]; then
@@ -211,10 +211,10 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/copyright ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/copyright\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/copyright\e[00m"
 	exit 1
 else
-	echo "El archivo debian/copyright existe"
+	echo "El archivo /debian/copyright existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/copyright | grep "$nombre") ]]; then
@@ -225,24 +225,24 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/install ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/install\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/install\e[00m"
 	exit 1
 else
-	echo "El archivo debian/install existe"
+	echo "El archivo /debian/install existe"
 fi
 
 if ! [[ -f $(pwd)/debian/md5sums ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/md5sums\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/md5sums\e[00m"
 	exit 1
 else
-	echo "El archivo debian/md5sums existe"
+	echo "El archivo /debian/md5sums existe"
 fi
 
 if ! [[ -f $(pwd)/debian/postinst ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/postinst\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/postinst\e[00m"
 	exit 1
 else
-	echo "El archivo debian/postinst existe"
+	echo "El archivo /debian/postinst existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/postinst | grep "esac") ]]; then
@@ -253,10 +253,10 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/postrm ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/postrm\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/postrm\e[00m"
 	exit 1
 else
-	echo "El archivo debian/postrm existe"
+	echo "El archivo /debian/postrm existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/postrm | grep "esac") ]]; then
@@ -267,10 +267,10 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/preinst ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/preinst\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/preinst\e[00m"
 	exit 1
 else
-	echo "El archivo debian/preinst existe"
+	echo "El archivo /debian/preinst existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/preinst | grep "esac") ]]; then
@@ -281,10 +281,10 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/prerm ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/prerm\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/prerm\e[00m"
 	exit 1
 else
-	echo "El archivo debian/prerm existe"
+	echo "El archivo /debian/prerm existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/prerm | grep "esac") ]]; then
@@ -295,31 +295,31 @@ else
 fi
 
 if ! [[ -f $(pwd)/debian/rules ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/rules\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/rules\e[00m"
 	exit 1
 else
-	echo "El archivo debian/rules existe"
+	echo "El archivo /debian/rules existe"
 fi
 
 if [[ $(md5sum $(pwd)/debian/rules | awk '{print $1}') = "$rules1" ]]; then
-	echo "El archivo debian/rules tiene el contenido correcto"
+	echo "El archivo /debian/rules tiene el contenido correcto"
 else
-	echo -e "\e[00;31mEl archivo debian/rules NO tiene el contenido correcto\e[00m"
+	echo -e "\e[00;31mEl archivo /debian/rules NO tiene el contenido correcto\e[00m"
 	exit 1
 fi
 
 if ! [[ -d $(pwd)/debian/source ]]; then
-	echo -e "\e[00;31mNo existe el directorio debian/source\e[00m"
+	echo -e "\e[00;31mNo existe el directorio /debian/source\e[00m"
 	exit 1
 else
-	echo "El directorio debian/source existe"
+	echo "El directorio /debian/source existe"
 fi
 
 if ! [[ -f $(pwd)/debian/source/format ]]; then
-	echo -e "\e[00;31mNo existe el archivo debian/source/format\e[00m"
+	echo -e "\e[00;31mNo existe el archivo /debian/source/format\e[00m"
 	exit 1
 else
-	echo "El archivo debian/source/format existe"
+	echo "El archivo /debian/source/format existe"
 fi
 
 if ! [[ -z $(cat $(pwd)/debian/source/format | grep "3.0 (quilt)") ]]; then
@@ -329,7 +329,21 @@ else
 	exit 1
 fi
 
-# Verificar que los archivos **install**, **md5sums** contengan la lista de todos los archivos a instalar
+for i in $(ls | grep -v AUTHORS | grep -v CHANGES | grep -v COPYING); do
+	if ! [[ -z $(cat $(pwd)/debian/install | grep "$i") ]]; then
+		echo "El archivo $i se encuentra en /debian/install"
+	else
+		echo -e "\e[00;31mEl archivo $i NO se encuentra en /debian/install\e[00m"
+		exit 1
+	fi
+
+	if ! [[ -z $(cat $(pwd)/debian/md5sums | grep "$i") ]]; then
+		echo "El archivo $i se encuentra en /debian/md5sums"
+	else
+		echo -e "\e[00;31mEl archivo $i NO se encuentra en /debian/md5sums\e[00m"
+		exit 1
+	fi
+done
 
 echo ""
 echo -e "\e[00;1;92mEl paquete supero todos las pruebas exitosamente.\e[00m"
